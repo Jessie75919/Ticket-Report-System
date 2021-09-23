@@ -17,7 +17,7 @@
 - Developer could use command to create user
 
   ```bash
-  php artisan createUser
+  php artisan user:create
   ```
 
 - RD is able to:
