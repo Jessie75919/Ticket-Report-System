@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\BugController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/report-bug', function (){
+    return view('report_bug');
+});
+Route::post('/create-bug', [BugController::class, 'create'])->name('create-bug');
