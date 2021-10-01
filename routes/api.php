@@ -18,8 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->group(function() {
     Route::get('/user', [UserController::class, 'info']);
     Route::get('/bugs', [BugController::class, 'get']);
-    Route::patch('/bugs/{bug}', [BugController::class, 'update']);
-    Route::patch('/bugs/{bug}/mark', [BugController::class, 'mark']);
-    Route::delete('/bugs/{bug}', [BugController::class, 'delete']);
+    Route::patch('/bugs/{bug}', [BugController::class, 'update'])
+        ->middleware('can:update,bug');
+    Route::patch('/bugs/{bug}/mark', [BugController::class, 'mark'])
+        ->middleware('can:mark,bug');
+    Route::delete('/bugs/{bug}', [BugController::class, 'delete'])
+        ->middleware('can:delete,bug');
 });
 
