@@ -56,9 +56,9 @@ class User extends Authenticatable
     public function bugs()
     {
         $key = null;
-        if($this->isRoleOf('RD')){
+        if($this->isRoleOf(Role::RD)){
             $key = 'resolved_user_id';
-        } else if($this->isRoleOf('QA')){
+        } else if($this->isRoleOf(Role::QA)){
             $key = 'created_user_id';
         }
         return $this->hasMany(Bug::class, $key);
